@@ -47,3 +47,4 @@ def check_equal(description, actual, expected):
         print("PASS", description)
     else:
         print("FAIL", description, "expected", expected, "got", actual)
+
