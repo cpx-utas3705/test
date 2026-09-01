@@ -15,13 +15,13 @@ def unconfirmed_time(acts:list[dict])->int:
             unconfirmed_minutes = unconfirmed_minutes + act["minutes"]
     return (unconfirmed_minutes)
 
-# count confiremed acts
-def count_confiremed_acts(acts:list[dict])->int:
-    confiremed_acts=0
+# count confirmed acts
+def count_confirmed_acts(acts:list[dict])->int:
+    confirmed_acts=0
     for act in acts:
         if act["confirmed"]==True:
-            confiremed_acts = confiremed_acts + 1
-    return(confiremed_acts)
+            confirmed_acts = confirmed_acts + 1
+    return(confirmed_acts)
 
 # Readiness message for summary
 def readiness_message(unconfirmed_minutes:int)->str:
@@ -36,7 +36,7 @@ def readiness_message(unconfirmed_minutes:int)->str:
     
 def summery_message(acts,unconfirmed_time):
     return (f"The total schedule time is {count_total_time(acts)} minutes\n" 
-           f"{count_confiremed_acts(acts)} acts has confirmed\n"
+           f"{count_confirmed_acts(acts)} acts has confirmed\n"
            f"Unconfirmed time {unconfirmed_time} minutes \n"
            f"{readiness_message(unconfirmed_time)}")
 
