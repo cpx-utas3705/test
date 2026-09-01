@@ -59,7 +59,7 @@ def test_unconfirmed_time():
     check_equal("check unconfirmed time",unconfirmed_time(test_acts),30)
 
 def test_count_confirmed_acts():
-    check_equal("check amount of confirmed acts",count_confiremed_acts(test_acts),1)
+    check_equal("check amount of confirmed acts",count_confirmed_acts(test_acts),1)
 
 def test_readiness_message():
     check_equal("check readiness message",readiness_message(70),"Several acts still need confirmation.")
