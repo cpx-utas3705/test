@@ -12,6 +12,25 @@ def print_menu():
     print("5. List festival summary")
     print("6. Quit")
 
+def get_act_inform():
+    name = get_error_detect.get_str("Name of act: ")
+    stage = get_error_detect.get_str("Stage locate: ")
+    category = get_error_detect.get_str("Category of the act: ")
+    minutes = get_error_detect.get_minutes()
+    confirmed = get_error_detect.get_confirmed()
+    return act_tool.add_act_format(name,stage,category,minutes,confirmed)
+
+def run_test():
+    act_tool.test_add_act_format()
+    act_tool.test_confirmed_act()
+    act_tool.test_view_act_by_stage()
+    summary_tool.test_count_confirmed_acts()
+    summary_tool.test_readiness_message()
+    summary_tool.test_count_total_time()
+    summary_tool.test_unconfirmed_time()
+
+
+    
 def main():
     choice = ''
     
@@ -22,14 +41,9 @@ def main():
             display= act_tool.display_all_acts(acts)
             print (display)
             
-        
          elif choice == "2" :
-            name = get_error_detect.get_str("Name of act: ")
-            stage = get_error_detect.get_str("Stage locate: ")
-            category = get_error_detect.get_str("Category of the act: ")
-            minutes = get_error_detect.get_minutes()
-            confirmed = get_error_detect.get_confirmed()
-            dict= act_tool.add_act_format(acts,name,stage,category,minutes,confirmed)
+        
+            dict= get_act_inform()
             acts.append(dict)
             
          elif choice == "3":
@@ -45,10 +59,7 @@ def main():
          elif choice == "5":
              print("\n")
              unconfirmed_time = summary_tool.unconfirmed_time(acts)
-             print(f"The total schedule time is {summary_tool.count_total_time(acts)} minutes\n" 
-                   f"{summary_tool.count_confiremed_acts(acts)} acts has confirmed\n"
-                   f"Unconfirmed time {unconfirmed_time} minutes \n"
-                   f"{summary_tool.readiness_message(unconfirmed_time)}")
+             print(summary_tool.summery_message(acts,unconfirmed_time))
          elif choice =="6":
              break
          else:
@@ -56,3 +67,4 @@ def main():
         
             
 main()
+run_test()
